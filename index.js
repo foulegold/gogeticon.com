@@ -7,7 +7,7 @@ process.on('uncaughtException', function(error) {
 });
 var TelegramBot = require('node-telegram-bot-api');
 var tg;
-function create() {
+function createBot() {
     var token = "407510348:AAF03V8XGfRQgmxdqa16sriFr9R7m2lEcP0";
     tg = new TelegramBot(token, {
         polling: true
@@ -74,4 +74,4 @@ function sendMenuMessage(message) {
     options.reply_markup.inline_keyboard.push([instructionButton, faqButton]);
     tg.sendMessage(message.chat.id, text, options);
 }
-create();
+createBot();
