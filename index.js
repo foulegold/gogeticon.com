@@ -5,8 +5,20 @@ process.on('uncaughtException', function(error) {
     console.error(error.stack);
     return false;
 });
+
+var mongoClient = require("mongodb").MongoClient;
+var dbase;
+mongoClient.connect("mongodb://localhost:27017/betbot", function(err, db){
+    if(err){
+        return console.log(err);
+    }
+    dbase = db;
+    // db.close();
+});
+
 var TelegramBot = require('node-telegram-bot-api');
 var tg;
+var callback = [];
 function createBot() {
     var token = "407510348:AAF03V8XGfRQgmxdqa16sriFr9R7m2lEcP0";
     tg = new TelegramBot(token, {
@@ -23,50 +35,68 @@ function onMessage(message) {
     }
     if (message.text && message.text.toLowerCase() === '/menu') {
          sendMenuMessage(message);
+    }
+    console.log('callback: ' + callback);
+    if (message.text && callback.length > 0){
+        for(var i=0; i < callback.length; i++) {
+            if (callback[i].from.id === message.from.id){
+                if (callback[i].data === 'activationCmd'){
+                    dbase.collection("users").find({name: 'foule'}).toArray(function(err, results) {
+                        console.log(results);
+                        // console.log(message);
+                    });
+                    tg.sendMessage(message.chat.id, 'попал в активацию');
+                    console.log('попал в активацию');
+                    callback.splice(i, 1);
+                    break;
+                }
+                if (callback[i].data === 'statusCmd'){
+                    tg.sendMessage(message.chat.id, 'попал в статус');
+                    console.log('попал в статус');
+                    callback.splice(i, 1);
+                    break;
+                }
+            }
         }
+    }
 }
 function onCallbackQuery(callbackQuery) {
     if (callbackQuery.data === 'activationCmd') {
-        // console.log(callbackQuery);
         var activationText = "Введите ключ";
         tg.sendMessage(callbackQuery.message.chat.id, activationText);
         tg.answerCallbackQuery(callbackQuery.id);
+        callback.unshift(callbackQuery);
     } else if (callbackQuery.data === 'statusCmd') {
         var statusText = "Проверка статуса подписки";
         tg.sendMessage(callbackQuery.message.chat.id, statusText);
         tg.answerCallbackQuery(callbackQuery.id);
+        callback.unshift(callbackQuery);
     } else if (callbackQuery.data === 'instructionCmd') {
-        var instructionText = "Инструкция";
-        tg.sendMessage(callbackQuery.message.chat.id, instructionText);
         tg.answerCallbackQuery(callbackQuery.id);
     } else if (callbackQuery.data === 'faqCmd') {
-        var faqText = "Здесь будут ответы на некоторые вопросы";
-        tg.sendMessage(callbackQuery.message.chat.id, faqText);
         tg.answerCallbackQuery(callbackQuery.id);
     }
 }
-// *********************************************
 function sendMenuMessage(message) {
     var text = 'Выбери, что тебе нужно';
-    //
     var activationButton = {
         text:"Активировать ключ",
         callback_data:'activationCmd'
     };
-    //
     var statusButton = {
         text:"Статус подписки",
         callback_data:'statusCmd'
     };
     var instructionButton = {
         text:"Инструкция",
-        callback_data:'instructionCmd'
+        callback_data:'instructionCmd',
+        url: 'http://telegra.ph/Kak-pravilno-polzovatsya-Kiroj-10-21'
     };
     var faqButton = {
         text:"F.A.Q.",
-        callback_data:'faqCmd'
+        callback_data:'faqCmd',
+        url: 'http://telegra.ph/FAQ-10-21'
     };
-    //
     var options = {};
     options.reply_markup = {};
     options.reply_markup.inline_keyboard = [];

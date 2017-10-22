@@ -1,9 +1,10 @@
 {
   "name": "betbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "betbot Kira",
   "main": "index.js",
   "dependencies": {
+    "mongodb": "^2.2.33",
     "node-telegram-bot-api": "^0.28.0"
   },
   "devDependencies": {},
@@ -11,6 +12,6 @@
     "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Foule",
   "license": "ISC"
 }
