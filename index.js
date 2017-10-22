@@ -6,8 +6,8 @@ process.on('uncaughtException', function(error) {
     return false;
 });
 
-var mongoClient = require("mongodb").MongoClient;
-var dbase;
+const mongoClient = require("mongodb").MongoClient;
+let dbase;
 mongoClient.connect("mongodb://localhost:27017/betbot", function(err, db){
     if(err){
         return console.log(err);
@@ -16,11 +16,11 @@ mongoClient.connect("mongodb://localhost:27017/betbot", function(err, db){
     // db.close();
 });
 
-var TelegramBot = require('node-telegram-bot-api');
-var tg;
-var callback = [];
+const TelegramBot = require('node-telegram-bot-api');
+let tg;
+let callback = {};
 function createBot() {
-    var token = "407510348:AAF03V8XGfRQgmxdqa16sriFr9R7m2lEcP0";
+    const token = "407510348:AAF03V8XGfRQgmxdqa16sriFr9R7m2lEcP0";
     tg = new TelegramBot(token, {
         polling: true
     });
@@ -36,68 +36,63 @@ function onMessage(message) {
     if (message.text && message.text.toLowerCase() === '/menu') {
          sendMenuMessage(message);
     }
-    console.log('callback: ' + callback);
-    if (message.text && callback.length > 0){
-        for(var i=0; i < callback.length; i++) {
-            if (callback[i].from.id === message.from.id){
-                if (callback[i].data === 'activationCmd'){
-                    dbase.collection("users").find({name: 'foule'}).toArray(function(err, results) {
-                        console.log(results);
-                        // console.log(message);
-                    });
-                    tg.sendMessage(message.chat.id, 'попал в активацию');
-                    console.log('попал в активацию');
-                    callback.splice(i, 1);
-                    break;
-                }
-                if (callback[i].data === 'statusCmd'){
-                    tg.sendMessage(message.chat.id, 'попал в статус');
-                    console.log('попал в статус');
-                    callback.splice(i, 1);
-                    break;
-                }
-            }
+    // console.log('callback: ' + callback);
+    if (message.text && callback[message.chat.id]){
+        if (callback[message.chat.id] === 'activationCmd'){
+            dbase.collection("users").find({name: 'foule'}).toArray(function(err, results) {
+                console.log(results);
+                // console.log(message);
+            });
+            tg.sendMessage(message.chat.id, 'попал в активацию');
+            console.log('попал в активацию');
+            delete callback.id;
+        }
+        if (callback[message.chat.id] === 'statusCmd'){
+            tg.sendMessage(message.chat.id, 'попал в статус');
+            console.log('попал в статус');
+            delete callback.id;
         }
     }
 }
 function onCallbackQuery(callbackQuery) {
     if (callbackQuery.data === 'activationCmd') {
-        var activationText = "Введите ключ";
+        let activationText = "Введите ключ";
         tg.sendMessage(callbackQuery.message.chat.id, activationText);
         tg.answerCallbackQuery(callbackQuery.id);
-        callback.unshift(callbackQuery);
     } else if (callbackQuery.data === 'statusCmd') {
-        var statusText = "Проверка статуса подписки";
+        let statusText = "Проверка статуса подписки";
         tg.sendMessage(callbackQuery.message.chat.id, statusText);
         tg.answerCallbackQuery(callbackQuery.id);
-        callback.unshift(callbackQuery);
     } else if (callbackQuery.data === 'instructionCmd') {
         tg.answerCallbackQuery(callbackQuery.id);
     } else if (callbackQuery.data === 'faqCmd') {
         tg.answerCallbackQuery(callbackQuery.id);
     }
+    // console.log(callbackQuery);
+    let id = callbackQuery.message.chat.id;
+    callback[id] = callbackQuery.data;
 }
 function sendMenuMessage(message) {
-    var text = 'Выбери, что тебе нужно';
-    var activationButton = {
+    const text = 'Выбери, что тебе нужно';
+    const activationButton = {
         text:"Активировать ключ",
         callback_data:'activationCmd'
     };
-    var statusButton = {
+    const statusButton = {
         text:"Статус подписки",
         callback_data:'statusCmd'
     };
-    var instructionButton = {
+    const instructionButton = {
         text:"Инструкция",
         callback_data:'instructionCmd',
         url: 'http://telegra.ph/Kak-pravilno-polzovatsya-Kiroj-10-21'
     };
-    var faqButton = {
+    const faqButton = {
         text:"F.A.Q.",
         callback_data:'faqCmd',
         url: 'http://telegra.ph/FAQ-10-21'
     };
-    var options = {};
+    const options = {};
     options.reply_markup = {};
     options.reply_markup.inline_keyboard = [];
     options.reply_markup.inline_keyboard.push([activationButton, statusButton]);
