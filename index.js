@@ -36,7 +36,6 @@ function onMessage(message) {
     if (message.text && message.text.toLowerCase() === '/menu') {
          sendMenuMessage(message);
     }
-    // console.log('callback: ' + callback);
     if (message.text && callback[message.chat.id]){
         if (callback[message.chat.id] === 'activationCmd'){
             dbase.collection("users").find({name: 'foule'}).toArray(function(err, results) {
@@ -45,12 +44,12 @@ function onMessage(message) {
             });
             tg.sendMessage(message.chat.id, 'попал в активацию');
             console.log('попал в активацию');
-            delete callback.id;
+            delete callback[message.chat.id];
         }
         if (callback[message.chat.id] === 'statusCmd'){
             tg.sendMessage(message.chat.id, 'попал в статус');
             console.log('попал в статус');
-            delete callback.id;
+            delete callback[message.chat.id];
         }
     }
 }
@@ -68,7 +67,6 @@ function onCallbackQuery(callbackQuery) {
     } else if (callbackQuery.data === 'faqCmd') {
         tg.answerCallbackQuery(callbackQuery.id);
     }
-    // console.log(callbackQuery);
     let id = callbackQuery.message.chat.id;
     callback[id] = callbackQuery.data;
 }
