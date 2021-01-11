@@ -7,7 +7,7 @@ mongoClient.connect("mongodb://localhost:27017/betbot", function(err, db){
     const TelegramBot = require('node-telegram-bot-api');
     let tg;
     function createBot() {
-        const token = "407510348:AAF03V8XGfRQgmxdqa16sriFr9R7m2lEcP0";
+        const token = "407510348:AAF03V8XGfRQgmxasdasdasddqa16sriFr9R7m2lEcP0";
         tg = new TelegramBot(token, {
             polling: true
         });
