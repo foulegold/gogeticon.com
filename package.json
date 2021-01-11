@@ -4,7 +4,7 @@
   "description": "betbot Kira",
   "main": "index.js",
   "dependencies": {
-    "mongodb": "^2.2.33",
+    "mongodb": "^3.1.13",
     "node-telegram-bot-api": "^0.28.0"
   },
   "devDependencies": {},
