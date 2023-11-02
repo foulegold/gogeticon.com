@@ -12,7 +12,7 @@ https://gravatar.com/gogeticoncom<br>
 https://www.linkedin.com/company/gogeticon<br>
 https://gogeticon.blogspot.com/<br>
 https://vimeo.com/gogeticon<br>
-https://medium.com/@gogeticon<br>
+https://medium.com/@gogeticon/about<br>
 https://www.tumblr.com/gogeticon<br>
 https://www.flickr.com/people/gogeticon/<br>
 https://unsplash.com/@gogeticon<br>
