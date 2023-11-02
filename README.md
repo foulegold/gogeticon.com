@@ -1,8 +1,8 @@
 https://gogeticon.com/ — Download free vector icons at high speed and without any restrictions! Here are the best vector icons for your projects in different formats and sizes.<br>
 Follow us on<br>
-https://www.facebook.com/groups/gogeticon<br>
-https://www.instagram.com/gogeticon/<br>
-https://www.pinterest.com/gogeticon/<br>
+[https://www.facebook.com/groups/gogeticon](https://www.facebook.com/groups/gogeticon)<br>
+[https://www.instagram.com/gogeticon/](https://www.instagram.com/gogeticon/)<br>
+[https://www.pinterest.com/gogeticon/](https://www.pinterest.com/gogeticon/)<br>
 https://www.youtube.com/@gogeticon<br>
 https://twitter.com/gogeticon<br>
 https://www.reddit.com/user/gogeticon<br>
