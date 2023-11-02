@@ -38,7 +38,7 @@ https://www.gta5-mods.com/users/gogeticon<br>
 https://myopportunity.com/profile/gogeticon-com/sl<br>
 https://ameblo.jp/gogeticon/entry-12816523761.html<br>
 https://updownradar.com/status/gogeticon.com<br>
-https://www.chordie.com/forum/profile.php?id=1685485
-https://social.msdn.microsoft.com/Profile/gogeticon.com
-https://social.microsoft.com/profile/gogeticon.com/
-https://www.blogger.com/profile/17590280419644358519
+https://www.chordie.com/forum/profile.php?id=1685485<br>
+https://social.msdn.microsoft.com/Profile/gogeticon.com<br>
+https://social.microsoft.com/profile/gogeticon.com/<br>
+https://www.blogger.com/profile/17590280419644358519<br>
