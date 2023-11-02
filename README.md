@@ -1,4 +1,4 @@
-https://gogeticon.com/ — Download free vector icons at high speed and without any restrictions! Here are the best vector icons for your projects in different formats and sizes.<br>
+<a href="https://gogeticon.com/">https://gogeticon.com</a> — Download free vector icons at high speed and without any restrictions! Here are the best vector icons for your projects in different formats and sizes.<br>
 Follow us on<br>
 [https://www.facebook.com/groups/gogeticon](https://www.facebook.com/groups/gogeticon)<br>
 [https://www.instagram.com/gogeticon/](https://www.instagram.com/gogeticon/)<br>
