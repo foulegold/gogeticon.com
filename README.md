@@ -41,4 +41,4 @@ Follow us on<br>
 [https://www.chordie.com/forum/profile.php?id=1685485](https://www.chordie.com/forum/profile.php?id=1685485)<br>
 [https://social.msdn.microsoft.com/Profile/gogeticon.com](https://social.msdn.microsoft.com/Profile/gogeticon.com)<br>
 [https://social.microsoft.com/profile/gogeticon.com/](https://social.microsoft.com/profile/gogeticon.com/)<br>
-[https://www.blogger.com/profile/17590280419644358519](https://www.blogger.com/profile/17590280419644358519)https://www.blogger.com/profile/17590280419644358519<br>
+[https://www.blogger.com/profile/17590280419644358519](https://www.blogger.com/profile/17590280419644358519)
