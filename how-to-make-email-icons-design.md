@@ -117,3 +117,5 @@ Accessibility in email design is key. Ensure your vector icons are usable and ac
 ### **Why use them in emails?**
 
 Vector icons uplift email design with scalable, lightweight, and flexible visual elements. They improve the visual hierarchy, guide readers' attention, and contribute to designing.
+
+Origin: https://gogeticon.com/blog/how-to-supercharge-email-design-and-engagement-with-email-vector-icons
